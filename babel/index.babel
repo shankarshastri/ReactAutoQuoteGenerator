@@ -1,0 +1,94 @@
+/*Footer Component*/
+class Footer extends React.Component
+{
+  
+  constructor(){super();}
+  render(){
+    let classname = 'animated flash footer navbar-fixed-bottom ' + this.props.class;
+    return(      
+    <footer className={classname}>
+        {this.props.content}  
+    </footer>
+    );
+  }
+}
+
+/*Loader Component*/
+class Loader extends React.Component {
+  constructor() {
+    super();
+  }
+
+  render() {
+    if (this.props.loaderState) {
+      return (<div className="spinner">
+  <div className="bounce1"></div>
+  <div className="bounce2"></div>
+  <div className="bounce3"></div>
+</div>);
+    } else {
+      return <div></div>;
+    }
+  }
+}
+
+/* Active Component Part */
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      quote: '',
+      author:'',
+      category:'',
+      loaderstyle: true
+    };
+  }
+
+  getQuotes() {
+    this.serviceRequest =
+      axios.get(this.props.source, {
+        headers: {
+          'X-Mashape-Key': 'OivH71yd3tmshl9YKzFH7BTzBVRQp1RaKLajsnafgL2aPsfP9V'
+        }
+      }).then((result) => {
+        console.log(result.data.quote);
+        this.setState({
+          quote: result.data.quote,
+          author: result.data.author,
+          category: result.data.category,
+          loaderstyle: false
+        });
+      });
+  }
+
+  componentDidMount() {
+    setInterval(this.getQuotes.bind(this), 10000);
+  }
+
+  componentWillUnmount() {
+    this.serverRequest.abort();
+  }
+
+  render() {
+    return (<div>
+      <div className="Absolute-Center is-Responsive">
+        {this.state.loaderstyle?
+       (<div><Loader loaderState={this.state.loaderstyle}/>
+        <Footer content="Loading...." class="infinite" /></div>):                
+        (<div><div className="divQuote">{'` '+ this.state.quote+' `'}        
+          <div>{'-- ' + this.state.author}</div>          
+        </div>
+        <Footer content="---- By Shankar Shastri ----  " class="footerStyle"/>
+            </div>
+        )}  
+      </div>      
+        </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <App source="https://andruxnet-random-famous-quotes.p.mashape.com/"/>,
+  document.getElementById("app")
+);

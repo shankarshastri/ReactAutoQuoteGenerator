@@ -1,0 +1,117 @@
+//spinners
+
+.spinner {
+  margin: 100px auto 0;
+  width: 70px;
+  text-align: center;
+}
+
+.spinner > div {
+  width: 18px;
+  height: 18px;
+  background-color: #333;
+
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+  0%, 80%, 100% { -webkit-transform: scale(0) }
+  40% { -webkit-transform: scale(1.0) }
+}
+
+//Code
+@-webkit-keyframes AnimationName {
+    0%{background-position:53% 0%}
+    50%{background-position:48% 100%}
+    100%{background-position:53% 0%}
+}
+
+body{
+  letter-spacing: -.05em;
+  font: 100/1.5 "Roboto", Verdana, sans-serif;
+  font-weight: 800;
+  word-wrap: break-word;
+  webkit-font-smoothing: antialiased;
+  background: linear-gradient(184deg, #f31212, #0bf3f5, #6521d5, #a0ee03);
+background-size: 800% 800%;
+-webkit-animation: AnimationName 56s ease infinite;
+animation: AnimationName 20s ease infinite;
+}
+
+.divQuote {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 1.5rem;
+   background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
+  -webkit-background-clip: text;
+ -webkit-text-fill-color: transparent;
+  -webkit-animation: hue 10s infinite linear, animationFrames 10s infinite alternate;  
+}
+
+@-webkit-keyframes hue {
+  from {
+    -webkit-filter: hue-rotate(0deg);
+    opacity:1;
+  }
+  to {
+    -webkit-filter: hue-rotate(-360deg);
+    opacity:0.5;
+  }
+}
+
+
+@-webkit-keyframes animationFrames {
+  0% {
+    opacity:0;
+    -webkit-transform:  translate(300px,0px)  skewX(-30deg) ;
+  }
+  60% {
+    opacity:1;
+    -webkit-transform:  translate(-40px,0px)  skewX(30deg) ;
+  }
+  80% {
+    opacity:1;
+    -webkit-transform:  translate(0px,0px)  skewX(-15deg) ;
+  }
+  100% {
+    opacity:1;
+    -webkit-transform:  translate(0px,0px)  skewX(0deg) ;
+  }
+}
+
+
+.Absolute-Center {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+
+.Absolute-Center.is-Responsive {
+  width: 50%; 
+  height: 50%;
+  min-width: 200px;
+  max-width: 400px;
+  padding: 40px;
+}
+
+//footer properties
+.footerStyle {
+ font: 100/1.5 "Roboto", Verdana, sans-serif;
+text-align:right;
+  -webkit-animation-duration: 5s;
+  -webkit-animation-delay: 2s;
+  -webkit-animation-iteration-count: infinite;
+}
